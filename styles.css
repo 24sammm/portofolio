@@ -847,11 +847,12 @@ body {
     
     .hero {
         text-align: center;
-        padding: 6rem 1rem 2rem;
+        padding: 9rem 1rem 2rem;
     }
     
     .hero-text h1 {
         font-size: 2.5rem;
+        margin-top: 2rem;
     }
     
     .image-container {
@@ -886,13 +887,15 @@ body {
         padding: 0 1rem;
     }
     
-    section {
-        padding: 4rem 0 !important;
+    .hero {
+        padding: 7rem 1rem 2rem;  /* ✅ Ditambah padding khusus untuk hero */
     }
     
     .hero-text h1 {
         font-size: 2rem;
+        margin-top: 3rem;  /* ✅ Ditambah margin-top lebih besar untuk mobile */
     }
+}
     
     .about-text h2,
     .skills h2,
