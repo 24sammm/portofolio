@@ -30,17 +30,41 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Navbar scroll effect
+// Navbar scroll effect (theme-aware)
+const getRootStyle = () => getComputedStyle(document.documentElement);
+
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 100) {
-        navbar.style.background = 'rgba(15, 20, 25, 0.98)';
+        navbar.style.background = getRootStyle().getPropertyValue('--navbar-bg-scrolled').trim();
         navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
     } else {
-        navbar.style.background = 'rgba(15, 20, 25, 0.95)';
+        navbar.style.background = getRootStyle().getPropertyValue('--navbar-bg').trim();
         navbar.style.boxShadow = 'none';
     }
 });
+
+// Theme toggle (night mode / light mode)
+const themeToggle = document.getElementById('theme-toggle');
+
+function applyTheme() {
+    if (!themeToggle) return;
+    const isLight = document.documentElement.classList.contains('light-mode');
+    const icon = themeToggle.querySelector('i');
+    icon.className = isLight ? 'fas fa-moon' : 'fas fa-sun';
+    const label = isLight ? 'Night Mode' : 'Light Mode';
+    themeToggle.title = label;
+    themeToggle.setAttribute('aria-label', label);
+}
+
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const isLight = document.documentElement.classList.toggle('light-mode');
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        applyTheme();
+    });
+    applyTheme();
+}
 
 // Active navigation link
 const sections = document.querySelectorAll('section');
@@ -171,32 +195,25 @@ document.querySelectorAll('.service-item, .skill-item, .stat-item, .timeline-ite
     observer.observe(element);
 });
 
-// Contact form handling
+// Use a mail client for local file previews; FormSubmit handles hosted submissions.
 const contactForm = document.querySelector('.contact-form form');
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        // Get form data
-        const formData = new FormData(contactForm);
-        const name = contactForm.querySelector('input[type="text"]').value;
+        const name = contactForm.querySelector('input[name="name"]').value.trim();
         const email = contactForm.querySelector('input[type="email"]').value;
-        const message = contactForm.querySelector('textarea').value;
-        
-        // Basic validation
-        if (!name || !email || !message) {
-            showNotification('Please fill in all fields', 'error');
-            return;
-        }
-        
+        const message = contactForm.querySelector('textarea[name="message"]').value.trim();
         if (!isValidEmail(email)) {
-            showNotification('Please enter a valid email address', 'error');
+            e.preventDefault();
+            showNotification('Please enter a valid email address.', 'error');
             return;
         }
-        
-        // Simulate form submission
-        showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
-        contactForm.reset();
+
+        if (window.location.protocol === 'file:') {
+            e.preventDefault();
+            const subject = 'Pesan baru dari portfolio Samuel Silaban';
+            const body = `Nama: ${name}\nEmail: ${email}\n\nPesan:\n${message}`;
+            window.location.href = `mailto:silabansamuel59@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
     });
 }
 
@@ -356,7 +373,7 @@ function createParticles() {
             position: absolute;
             width: 2px;
             height: 2px;
-            background: rgba(255, 184, 0, 0.3);
+            background: rgba(56, 189, 248, 0.3);
             border-radius: 50%;
             left: ${Math.random() * 100}%;
             top: ${Math.random() * 100}%;
@@ -388,6 +405,25 @@ function createParticles() {
 
 // Initialize particles
 createParticles();
+
+// Efek 3D tilt untuk foto hero (mengikuti gerakan mouse)
+const heroImage = document.querySelector('.hero-image');
+const heroImageCard = document.querySelector('.image-container');
+
+if (heroImage && heroImageCard) {
+    heroImage.addEventListener('mousemove', (e) => {
+        const rect = heroImage.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;  // -0.5 .. 0.5 (horizontal)
+        const y = (e.clientY - rect.top) / rect.height - 0.5;  // -0.5 .. 0.5 (vertikal)
+        heroImageCard.style.transform = `rotateY(${(x * 18).toFixed(2)}deg) rotateX(${(y * -18).toFixed(2)}deg)`;
+        heroImageCard.style.boxShadow = `${(-x * 40).toFixed(1)}px ${(20 + y * 20).toFixed(1)}px 60px var(--shadow)`;
+    });
+
+    heroImage.addEventListener('mouseleave', () => {
+        heroImageCard.style.transform = 'rotateY(0deg) rotateX(0deg)';
+        heroImageCard.style.boxShadow = '';
+    });
+}
 
 // Handle profile image fallback
 const profileImg = document.getElementById('profile-img');
@@ -429,7 +465,7 @@ document.addEventListener('mousemove', (e) => {
             position: fixed;
             width: 20px;
             height: 20px;
-            background: rgba(255, 184, 0, 0.5);
+            background: rgba(56, 189, 248, 0.5);
             border-radius: 50%;
             pointer-events: none;
             z-index: 9999;
@@ -450,7 +486,7 @@ document.querySelectorAll('button, a, .project-card, .service-item').forEach(ele
         const cursor = document.querySelector('.custom-cursor');
         if (cursor) {
             cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
-            cursor.style.background = 'rgba(255, 184, 0, 0.8)';
+            cursor.style.background = 'rgba(56, 189, 248, 0.8)';
         }
     });
     
@@ -458,7 +494,7 @@ document.querySelectorAll('button, a, .project-card, .service-item').forEach(ele
         const cursor = document.querySelector('.custom-cursor');
         if (cursor) {
             cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-            cursor.style.background = 'rgba(255, 184, 0, 0.5)';
+            cursor.style.background = 'rgba(56, 189, 248, 0.5)';
         }
     });
 });
