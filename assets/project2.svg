@@ -1,0 +1,13 @@
+<svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="600" height="400" fill="#1A1D29"/>
+<rect x="50" y="50" width="500" height="300" fill="#2D3748" rx="10"/>
+<rect x="70" y="70" width="460" height="40" fill="#4A5568" rx="5"/>
+<text x="300" y="95" text-anchor="middle" fill="#E2E8F0" font-family="Arial" font-size="16" font-weight="600">Web GIS Application</text>
+<rect x="70" y="130" width="300" height="200" fill="#10B981" rx="5" opacity="0.2"/>
+<path d="M100 180 L150 200 L200 160 L250 190 L300 170" stroke="#FFB800" stroke-width="3" fill="none"/>
+<circle cx="150" cy="200" r="6" fill="#FFB800"/>
+<circle cx="200" cy="160" r="6" fill="#FFB800"/>
+<circle cx="250" cy="190" r="6" fill="#FFB800"/>
+<rect x="390" y="130" width="140" height="200" fill="#1F2937" rx="5"/>
+<text x="300" y="370" text-anchor="middle" fill="#A0AEC0" font-family="Arial" font-size="12">Interactive Map Interface</text>
+</svg>
