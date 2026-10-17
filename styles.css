@@ -158,6 +158,22 @@ body {
     box-shadow: 0 10px 25px var(--accent-glow);
 }
 
+.cv-download {
+    border: 1px solid var(--accent-border);
+    border-radius: 25px;
+    padding: 0.45rem 1rem;
+    color: var(--accent) !important;
+}
+
+.cv-download:hover {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+}
+
+.cv-download::after {
+    display: none;
+}
+
 .hamburger {
     display: none;
     flex-direction: column;
