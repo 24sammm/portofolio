@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        // Default: light mode. Terapkan tema tersimpan sebelum render agar tidak terjadi kedipan
+        if (localStorage.getItem('theme') !== 'dark') {
+            document.documentElement.classList.add('light-mode');
+        }
+    </script>
 </head>
 <body>
     <!-- Navigation -->
@@ -23,6 +29,9 @@
                 <a href="#projects" class="nav-link">Projects</a>
                 <a href="#contact" class="nav-link contact-btn">Contact</a>
             </div>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Ganti tema" title="Light Mode">
+                <i class="fas fa-sun"></i>
+            </button>
             <div class="hamburger" id="hamburger">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -38,7 +47,6 @@
                 <div class="hero-text">
                     <h1>I HAVE <span class="highlight">MARINE INFORMATION SYSTEMS</span> & <span class="highlight">SPATIAL ANALYSIS</span> EXPERIENCE</h1>
                     <p>Saya mahasiswa Sistem Informasi Kelautan dengan minat dalam pemrograman web dan analisis spasial. Aktif dalam pengembangan solusi teknologi untuk sektor kelautan dan perikanan.</p>
-                    <button class="hero-btn">Get Started</button>
                     <div class="hero-indicators">
                         <span class="indicator active"></span>
                         <span class="indicator"></span>
@@ -50,18 +58,31 @@
                 </div>
                 <div class="hero-image">
                     <div class="image-container">
-                        <img src="samuelsilaban.png" alt="Samuel Silaban" id="profile-img">
+                        <img src="photoprofile.png" alt="Samuel Silaban" id="profile-img">
                         <div class="image-overlay"></div>
                     </div>
                 </div>
             </div>
             
-            <div class="hero-skills">
-                <div class="skill-tag">HTML</div>
-                <div class="skill-tag">CSS</div>
-                <div class="skill-tag">JavaScript</div>
-                <div class="skill-tag">Python</div>
-                <div class="skill-tag">ArcGIS Pro</div>
+            <div class="hero-skills" aria-label="Technologies and project experience">
+                <div class="hero-skills-track">
+                    <div class="hero-skills-set">
+                        <div class="skill-tag">HTML</div>
+                        <div class="skill-tag">CSS</div>
+                        <div class="skill-tag">JavaScript</div>
+                        <div class="skill-tag">Python</div>
+                        <div class="skill-tag">ArcGIS Pro</div>
+                        <div class="skill-tag">IoT-Based Water Quality Monitoring</div>
+                    </div>
+                    <div class="hero-skills-set" aria-hidden="true">
+                        <div class="skill-tag">HTML</div>
+                        <div class="skill-tag">CSS</div>
+                        <div class="skill-tag">JavaScript</div>
+                        <div class="skill-tag">Python</div>
+                        <div class="skill-tag">ArcGIS Pro</div>
+                        <div class="skill-tag">IoT-Based Water Quality Monitoring</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -256,6 +277,7 @@
                         <h3>Intern</h3>
                         <h4>Stasiun Meteorologi Maritim Kelas I Merak | BMKG</h4>
                         <span class="timeline-date">2026 August - Present</span>
+                        <img class="experience-image" src="assets/samBMKG.jpeg" alt="Samuel saat menjalani magang di BMKG" loading="lazy">
                         <p>Sedang menjalani magang di Stasiun Meteorologi Maritim Kelas I Merak, terlibat dalam proyek-proyek penelitian dan Analisis GIS.</p>
                     </div>
                 </div>
@@ -265,7 +287,15 @@
                         <h3>Intern</h3>
                         <h4>BPPSDM Kementrian Kelautan dan Perikanan</h4>
                         <span class="timeline-date">2026 Feb - 2026 June</span>
-                        <p>Sedang menjalani magang di BPPSDM Kementrian Kelautan dan Perikanan, terlibat dalam proyek-proyek penelitian,Analisis GIS dan pengembangan Sistem Informasi Kelautan.</p>
+                        <div class="experience-gallery">
+                            <img class="experience-image" src="assets/samKKP.jpeg" alt="Samuel saat menjalani magang di BPPSDM Kementrian Kelautan dan Perikanan" loading="lazy">
+                            <img class="experience-image" src="assets/samKKP1.jpeg" alt="Kegiatan Samuel di BPPSDM Kementrian Kelautan dan Perikanan" loading="lazy">
+                        </div>
+                        <ul class="experience-highlights">
+                            <li>Menganalisis stok karbon mangrove di wilayah Pantai Utara Jawa menggunakan GIS dan penginderaan jauh secara temporal dari 2013–2025.</li>
+                            <li>Menyusun artikel jurnal berdasarkan analisis temporal stok karbon mangrove pada periode 2020–2025.</li>
+                            <li>Mendukung penelitian mahasiswa program doktoral ITB melalui pengolahan dan analisis data stok karbon mangrove berbasis remote sensing.</li>
+                        </ul>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -274,7 +304,8 @@
                         <h3>Active Member</h3>
                         <h4>HIMATASKA (Himpunan Mahasiswa Sistem Informasi Kelautan)</h4>
                         <span class="timeline-date">2024 - 2025</span>
-                        <p>Aktif dalam organisasi kemahasiswaan, berpartisipasi dalam kegiatan akademik dan pengembangan soft skills di bidang kelautan.</p>
+                        <img class="experience-image" src="assets/SertifHimpunan.jpg" alt="Sertifikat keanggotaan HIMATASKA Samuel Silaban" loading="lazy">
+                        <p>Aktif dalam organisasi kemahasiswaan sebagai anggota Komisi IV pada Dewan Perwakilan HIMATASKA, serta berpartisipasi dalam kegiatan akademik dan pengembangan soft skills di bidang kelautan.</p>
                     </div>
                 </div>
                 
@@ -284,6 +315,7 @@
                         <h3>Research Publication</h3>
                         <h4>Marine Information Systems Journal</h4>
                         <span class="timeline-date">2025</span>
+                        <img class="experience-image" src="assets/jurnal.png" alt="Publikasi jurnal Samuel Silaban" loading="lazy">
                         <p>Menerbitkan 1 publikasi jurnal dalam bidang sistem informasi kelautan yang membahas implementasi teknologi GIS untuk analisis data maritim.</p>
                         <p>Bisa Diakses Pada link ini <a href="https://jpips.fkip.unila.ac.id/index.php/jpg/article/view/22" target="_blank">https://jpips.fkip.unila.ac.id
                         <br>/index.php/jpg/article/view/22</a>.</p>
@@ -337,6 +369,7 @@
                             <span>C++</span>
                             <span>JavaScript</span>
                             <span>Python</span>
+                            <span>IoT</span>
                         </div>
                     </div>
                 </div>
@@ -386,23 +419,26 @@
                     
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>Indonesia</span>
+                        <span>Banten, Indonesia</span>
                     </div>
                     
                     <div class="social-links">
-                        <a href="https://www.linkedin.com/in/samuel-silaban-02936a319/"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.linkedin.com/in/samuelsilaban/"><i class="fab fa-linkedin"></i></a>
                         <a href="https://github.com/24sammm"><i class="fab fa-github"></i></a>
                         <a href="https://www.instagram.com/24sammm_/"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
                 
                 <div class="contact-form">
-                    <form>
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="email" placeholder="Your Email" required>
-                        <textarea placeholder="Your Message" required></textarea>
+                    <form action="https://formsubmit.co/silabansamuel59@gmail.com" method="POST">
+                        <input type="hidden" name="_subject" value="Pesan baru dari portfolio Samuel Silaban">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="text" name="name" placeholder="Your Name" autocomplete="name" required>
+                        <input type="email" name="email" placeholder="Your Email" autocomplete="email" required>
+                        <textarea name="message" placeholder="Your Message" required></textarea>
                         <button type="submit">Send Message</button>
+                       
                     </form>
                 </div>
             </div>
