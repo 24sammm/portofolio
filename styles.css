@@ -208,8 +208,52 @@ body {
     bottom: 0;
     background:
         radial-gradient(circle at 18% 20%, rgba(85, 183, 232, 0.14) 0%, transparent 34%),
-        radial-gradient(circle at 84% 68%, rgba(242, 184, 128, 0.1) 0%, transparent 30%);
+        radial-gradient(circle at 84% 68%, rgba(242, 184, 128, 0.12) 0%, transparent 30%),
+        radial-gradient(ellipse at 50% 105%, rgba(36, 119, 178, 0.18), transparent 54%);
     pointer-events: none;
+    animation: heroAtmosphere 12s ease-in-out infinite alternate;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.34;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(36, 119, 178, 0.3) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(36, 119, 178, 0.3) 1px, transparent 1px);
+    background-size: 88px 88px;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%);
+    transform: none;
+    animation: dataGridDrift 14s linear infinite;
+}
+
+@keyframes heroAtmosphere {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.08);
+    }
+}
+
+@keyframes dataGridDrift {
+    from {
+        background-position: 0 0, 0 0;
+    }
+    to {
+        background-position: 0 72px, 72px 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero::before,
+    .hero::after,
+    .contact-orbit-ring {
+        animation: none;
+    }
 }
 
 .hero-container {
@@ -233,6 +277,16 @@ body {
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 2rem;
+}
+
+.hero-text {
+    position: relative;
+    z-index: 3;
+}
+
+.hero-skills {
+    position: relative;
+    z-index: 3;
 }
 
 .hero-text p {
@@ -270,6 +324,7 @@ body {
 
 .image-container {
     position: relative;
+    z-index: 2;
     width: 400px;
     height: 400px;
     border-radius: 20px;
@@ -796,28 +851,119 @@ body {
 
 /* Contact Section */
 .contact {
-    padding: 8rem 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 1050px;
+    padding: 7.25rem 0;
     background: linear-gradient(135deg, var(--bg-2) 0%, var(--bg-3) 100%);
 }
 
+.contact-orbit {
+    position: absolute;
+    top: 7.25rem;
+    left: 0;
+    right: 0;
+    height: min(88vw, 900px);
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+    opacity: 0.72;
+}
+
+.contact-orbit::before {
+    content: '';
+    position: absolute;
+    width: min(88vw, 900px);
+    height: min(88vw, 900px);
+    border: 1px solid var(--accent-border);
+    border-radius: 50%;
+    box-shadow: 0 0 80px var(--accent-glow);
+}
+
+.contact-orbit-ring {
+    position: relative;
+    width: min(88vw, 900px);
+    height: min(88vw, 900px);
+    border-radius: 50%;
+    animation: contactOrbit 34s linear infinite;
+}
+
+.contact-orbit-ring img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: clamp(70px, 8vw, 116px);
+    height: clamp(70px, 8vw, 116px);
+    padding: 0.3rem;
+    object-fit: cover;
+    border: 1px solid var(--accent-border);
+    border-radius: 22%;
+    background: var(--card-bg);
+    box-shadow: 0 14px 30px rgba(8, 28, 51, 0.2);
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateY(calc(min(44vw, 450px) * -1)) rotate(calc(var(--angle) * -1));
+}
+
+.contact-orbit-ring img:nth-child(1) { --angle: 0deg; }
+.contact-orbit-ring img:nth-child(2) { --angle: 45deg; }
+.contact-orbit-ring img:nth-child(3) { --angle: 90deg; }
+.contact-orbit-ring img:nth-child(4) { --angle: 135deg; }
+.contact-orbit-ring img:nth-child(5) { --angle: 180deg; }
+.contact-orbit-ring img:nth-child(6) { --angle: 225deg; }
+.contact-orbit-ring img:nth-child(7) { --angle: 270deg; }
+.contact-orbit-ring img:nth-child(8) { --angle: 315deg; }
+
+@keyframes contactOrbit {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 .contact h2 {
+    position: relative;
+    z-index: 2;
     text-align: center;
     font-size: 3rem;
     font-weight: 700;
-    margin-bottom: 4rem;
+    margin: 0 0 1.5rem;
 }
 
 .contact-content {
+    position: relative;
+    z-index: 2;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: start;
+    width: min(78vw, 900px);
+    aspect-ratio: 1;
+    margin: 0 auto;
+    padding: 5rem 5rem 4rem;
+    border: 1px solid var(--card-border);
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--bg-2) 82%, transparent);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 100px var(--accent-glow), inset 0 0 70px rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+}
+
+.contact-content h2 {
+    grid-column: 1 / -1;
 }
 
 .contact-info h3 {
     font-size: 1.8rem;
     margin-bottom: 1rem;
     color: var(--accent);
+}
+
+.contact-info,
+.contact-form {
+    position: relative;
+    top: -12px;
+}
+
+.contact-form {
+    top: -42px;
 }
 
 .contact-info p {
@@ -867,7 +1013,7 @@ body {
 .contact-form {
     background: var(--card-bg);
     padding: 2rem;
-    border-radius: 15px;
+    border-radius: 18px;
     border: 1px solid var(--card-border);
 }
 
@@ -951,6 +1097,7 @@ body {
     .projects-grid {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
+
 }
 
 @media (max-width: 768px) {
@@ -1035,6 +1182,7 @@ body {
         width: 300px;
         height: 300px;
     }
+
     
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1055,6 +1203,18 @@ body {
     
     .projects-grid {
         grid-template-columns: 1fr;
+    }
+
+    .contact {
+        min-height: auto;
+    }
+
+    .contact-content {
+        width: calc(100% - 2rem);
+        aspect-ratio: auto;
+        min-height: 0;
+        padding: 3rem 2rem;
+        border-radius: 32px;
     }
 }
 
@@ -1078,6 +1238,31 @@ body {
     .projects h2,
     .contact h2 {
         font-size: 2rem;
+    }
+
+    .contact {
+        padding: 6rem 0;
+    }
+
+    .contact-orbit {
+        opacity: 0.45;
+    }
+
+    .contact-orbit::before,
+    .contact-orbit-ring {
+        width: 78vw;
+        height: 78vw;
+    }
+
+    .contact-orbit-ring img {
+        width: 62px;
+        height: 62px;
+        transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-39vw) rotate(calc(var(--angle) * -1));
+    }
+
+    .contact-content {
+        padding: 1.25rem;
+        background: color-mix(in srgb, var(--bg-2) 90%, transparent);
     }
     
     .stats-grid {
