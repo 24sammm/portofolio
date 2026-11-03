@@ -1,471 +1,82 @@
-<!DOCTYPE html>
-<html lang="id">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samuel Silaban - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        // Default: light mode. Terapkan tema tersimpan sebelum render agar tidak terjadi kedipan
-        if (localStorage.getItem('theme') !== 'dark') {
-            document.documentElement.classList.add('light-mode');
-        }
-    </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Samuel Silaban</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Inter+Tight:wght@100..900&display=swap" rel="stylesheet">
+  <style>
+    :root{--u:min(calc(100vw / 1440),1.333px);--paper:#c9c9c9;--ink:#111;--white:#f4f4f4;--muted:#6f6f6f;--line:rgba(255,255,255,.28)}
+    *{box-sizing:border-box}html{background:#000;scroll-behavior:smooth}body{margin:0;background:#000;color:var(--white);font-family:"Inter Tight",Arial,sans-serif;overflow-x:hidden}.page{min-width:0}
+    .hero{height:calc(938 * var(--u));position:relative;background:var(--paper);color:var(--ink);overflow:hidden}.hero-photo{position:absolute;z-index:1;left:calc(338 * var(--u));top:calc(-35 * var(--u));width:calc(764 * var(--u));height:calc(1024 * var(--u));object-fit:cover;filter:grayscale(1) brightness(.9);opacity:0;transform:translateY(40px);animation:photoIn 1.3s .15s ease forwards;will-change:transform}
+    .hero:after{display:none}
+    .nav{position:absolute;z-index:8;top:calc(61 * var(--u));left:calc(57 * var(--u));display:flex;align-items:center;padding:calc(4 * var(--u));height:calc(48 * var(--u));border-radius:999px;background:rgba(255,255,255,.72);gap:calc(2 * var(--u));opacity:0;transform:translateY(-14px);animation:rise .7s .3s ease forwards}.nav a{position:relative;display:grid;place-items:center;height:100%;padding:0 calc(17 * var(--u));font-size:calc(13 * var(--u));font-weight:500;color:#505050;text-decoration:none;z-index:1;transition:color .25s ease}.nav a:hover,.nav a:focus-visible{color:#fff}.nav .slider{position:absolute;left:calc(4 * var(--u));top:calc(4 * var(--u));height:calc(40 * var(--u));width:calc(57 * var(--u));border-radius:999px;background:#111;will-change:transform,width;z-index:0}.hero-meta{position:absolute;z-index:5;right:calc(59 * var(--u));top:calc(63 * var(--u));display:flex;align-items:center;gap:calc(35 * var(--u));font-size:calc(13 * var(--u));opacity:0;animation:rise .7s .45s ease forwards}    .button{border:0;background:#111;color:#fff;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;transition:transform .2s ease}.button:hover{transform:translateY(-1px)}.icon-arrow{font-size:.9em;line-height:1}.contact{width:calc(144 * var(--u));height:calc(46 * var(--u));font-size:calc(13 * var(--u))}
+    .title{position:absolute;z-index:4;left:calc(57 * var(--u));top:calc(246 * var(--u));font-family:Archivo,sans-serif;font-stretch:104%;font-size:calc(90 * var(--u));line-height:.86;letter-spacing:-.06em;font-weight:640;overflow:hidden}.title-line{display:block;transform:translateY(110%);animation:titleIn 1s cubic-bezier(.2,.75,.2,1) forwards}.title-line:nth-child(2){animation-delay:.11s}.title-year{position:absolute;left:calc(282 * var(--u));top:calc(27 * var(--u));font-size:calc(17 * var(--u));letter-spacing:-.03em;font-weight:600;white-space:nowrap}
+    .about{position:absolute;z-index:5;left:calc(57 * var(--u));top:calc(458 * var(--u));font-size:calc(14 * var(--u));max-width:calc(268 * var(--u));opacity:0;animation:rise .7s .65s ease forwards}.eyebrow{font-size:calc(13 * var(--u));margin-bottom:calc(20 * var(--u));font-weight:600}.about p{margin:0;line-height:1.35}.about .button{margin-top:calc(29 * var(--u));width:calc(142 * var(--u));height:calc(43 * var(--u));font-size:calc(13 * var(--u))}
+    .growth-cluster{position:absolute;z-index:5;right:calc(72 * var(--u));top:calc(205 * var(--u));width:calc(300 * var(--u));height:calc(225 * var(--u))}.growth{position:absolute;padding:calc(8 * var(--u)) calc(13 * var(--u)) calc(8 * var(--u)) calc(8 * var(--u));border-radius:999px;background:rgba(255,255,255,.55);backdrop-filter:blur(8px);font-size:calc(13 * var(--u));display:flex;align-items:center;gap:calc(8 * var(--u));opacity:0;animation:rise .7s .75s ease forwards;white-space:nowrap}.growth:nth-child(1){top:0;right:0}.growth:nth-child(2){top:calc(72 * var(--u));right:0;animation-delay:.9s}.growth:nth-child(3){top:calc(144 * var(--u));right:0;animation-delay:1.05s}.check{width:calc(27 * var(--u));height:calc(27 * var(--u));display:grid;place-items:center;border-radius:50%;background:#111;color:#fff;font-size:calc(13 * var(--u))}
+    .availability{position:absolute;z-index:5;right:calc(59 * var(--u));top:calc(440 * var(--u));text-align:right;font-size:calc(14 * var(--u));line-height:1.15;opacity:0;animation:rise .7s .8s ease forwards}.availability span{color:#777}.availability b{font-weight:500}
+    .brand-plate{position:absolute;z-index:6;left:calc(532 * var(--u));top:calc(444 * var(--u));width:calc(364 * var(--u));height:calc(73 * var(--u));display:flex;align-items:center;padding:0 calc(19 * var(--u));gap:calc(15 * var(--u));background:rgba(27,27,27,.73);color:#fff;backdrop-filter:blur(9px);opacity:0;animation:rise .7s 1s ease forwards}.mark{width:calc(32 * var(--u));height:calc(32 * var(--u));position:relative;clip-path:polygon(0 0,100% 50%,0 100%);border:1px solid #fff}.mark:after{content:"";position:absolute;inset:calc(8 * var(--u));background:#fff;clip-path:polygon(0 0,100% 50%,0 100%)}.brand-plate strong{font:500 calc(25 * var(--u))/1 Archivo,sans-serif;letter-spacing:.04em}.plate-menu{margin-left:auto;display:flex;flex-direction:column;gap:calc(5 * var(--u));width:calc(26 * var(--u))}.plate-menu i{height:1px;background:#fff;width:100%}.plate-menu i:last-child{width:65%;align-self:flex-end}
+    .works{position:absolute;z-index:5;right:calc(59 * var(--u));top:calc(540 * var(--u));width:calc(196 * var(--u));opacity:0;animation:rise .7s 1s ease forwards}.works-title{font-size:calc(14 * var(--u));line-height:1.05;margin-bottom:calc(12 * var(--u))}.works-title small{display:block;color:#888;font-size:calc(12 * var(--u));margin-top:calc(6 * var(--u))}.work-image{height:calc(196 * var(--u));overflow:hidden;position:relative;border-radius:calc(12 * var(--u))}.work-image img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:none;transition:opacity .35s ease}.work-image img.active{display:block}.work-arrow{position:absolute;right:calc(13 * var(--u));bottom:calc(12 * var(--u));width:calc(42 * var(--u));height:calc(42 * var(--u));border:0;border-radius:50%;background:rgba(255,255,255,.76);font-size:calc(17 * var(--u));transition:transform .5s ease}.works:hover .work-arrow{transform:rotate(45deg)}.progress{height:1px;background:rgba(255,255,255,.35);margin-top:calc(17 * var(--u))}.progress i{display:block;height:2px;width:50%;background:#fff;transform-origin:left;transition:transform .35s ease}
+    .stats{position:absolute;z-index:5;left:calc(57 * var(--u));bottom:calc(37 * var(--u));width:calc(341 * var(--u));height:calc(208 * var(--u));background:#cdcdcd;padding:calc(7 * var(--u));display:grid;grid-template-columns:1fr 1fr;gap:calc(7 * var(--u));opacity:0;animation:rise .7s 1.15s ease forwards}.stat-card{position:relative;overflow:hidden;min-width:0}.partner-card{background:#1b1b1b;color:#fff;padding:calc(13 * var(--u));display:flex;flex-direction:column}.coding-card>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.72}.coding-card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.2),rgba(0,0,0,.72))}.coding-card>*:not(img){position:relative;z-index:1}.stat-number{font:500 calc(36 * var(--u))/1 Archivo,sans-serif;letter-spacing:-.04em}.project-label{font-size:calc(17 * var(--u));line-height:1.05;max-width:calc(120 * var(--u))}.stat-caption{font-size:calc(12 * var(--u));color:#a7a7a7;margin-top:3px}.partner-marks{display:grid;grid-template-columns:repeat(2,1fr);gap:calc(7 * var(--u));margin-top:auto;margin-bottom:calc(28 * var(--u));font:500 calc(8 * var(--u))/1 Archivo,sans-serif;color:#d0d0d0}.partner-marks span:before{content:"✦";margin-right:4px;color:#777}.callbar{position:absolute;bottom:0;left:0;right:0;height:calc(26 * var(--u));padding:0 calc(10 * var(--u));display:flex;align-items:center;justify-content:space-between;background:#fff;color:#111;font-size:calc(10 * var(--u));font-weight:600}.feed-card{background:#333;color:#fff}.feed-card img{width:100%;height:100%;object-fit:cover}.feed-card:before{content:"Seaweed Potential · GIS Study";position:absolute;z-index:1;top:calc(9 * var(--u));left:calc(10 * var(--u));right:calc(10 * var(--u));border-top:1px solid rgba(255,255,255,.45);padding-top:calc(7 * var(--u));font-size:calc(9 * var(--u));color:#fff}.feed-copy{position:absolute;z-index:1;right:calc(10 * var(--u));bottom:calc(10 * var(--u));font-size:calc(10 * var(--u));line-height:1.1;text-align:right;text-shadow:0 1px 3px rgba(0,0,0,.7)}.logos{position:absolute;z-index:4;left:calc(486 * var(--u));bottom:calc(42 * var(--u));font:500 calc(12 * var(--u))/1 Archivo,sans-serif;color:#fff;letter-spacing:.03em;opacity:.8;word-spacing:calc(18 * var(--u));opacity:0;animation:rise .7s 1.25s ease forwards}
+    .bar{height:calc(111 * var(--u));border-bottom:1px solid rgba(255,255,255,.28);display:flex;align-items:center;justify-content:space-between;padding:0 calc(57 * var(--u));font:500 calc(14 * var(--u))/1 Archivo,sans-serif;letter-spacing:.03em}.bar .muted{color:#6f6f6f}.scroll-cue{display:flex;align-items:center;gap:calc(13 * var(--u))}.round-arrow{display:grid;place-items:center;width:calc(28 * var(--u));height:calc(28 * var(--u));border-radius:50%;background:#fff;color:#111;font-family:Arial;font-size:calc(16 * var(--u))}
+    .statement{padding:calc(170 * var(--u)) 20px calc(230 * var(--u));background:#000}.statement-copy{max-width:calc(830 * var(--u));margin:0 auto;font-size:calc(52 * var(--u));line-height:1.33;letter-spacing:-.028em;font-weight:500}.word{color:#6f6f6f;transition:color .25s ease}.word.is-lit{color:#f4f4f4}.subline{margin:calc(150 * var(--u)) auto 0;max-width:calc(830 * var(--u));font-size:calc(23 * var(--u));line-height:1.18}.subline em{color:#6f6f6f;font-style:normal}
+    .trust-wrap{background:#000;padding:0 calc(69 * var(--u)) calc(150 * var(--u))}.trust-panel{min-height:calc(429 * var(--u));border:1px solid var(--line);border-radius:calc(14 * var(--u));padding:calc(51 * var(--u)) calc(48 * var(--u));display:grid;grid-template-columns:calc(350 * var(--u)) 1fr;gap:calc(56 * var(--u));overflow:hidden}.trust-heading{font-size:calc(55 * var(--u));line-height:.95;letter-spacing:-.045em;font-weight:500;margin:0;position:relative}.trust-heading .glass{position:absolute;width:calc(88 * var(--u));height:calc(88 * var(--u));border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);backdrop-filter:blur(8px);border-radius:calc(12 * var(--u));display:grid;place-items:center;font-size:calc(39 * var(--u));font-weight:300}.glass.one{top:calc(-18 * var(--u));right:calc(2 * var(--u))}.glass.two{bottom:calc(-35 * var(--u));left:calc(188 * var(--u))}.trust-copy{font-size:calc(14.5 * var(--u));line-height:1.25;max-width:calc(250 * var(--u));margin-top:calc(36 * var(--u))}.trust-cards{display:flex;gap:calc(14 * var(--u));min-width:0}.trust-card{height:calc(326 * var(--u));border-radius:calc(8 * var(--u));position:relative;overflow:hidden;transition:transform .3s ease}.trust-card:hover{transform:translateY(calc(-6 * var(--u)))}.avatar-card{background:#d6d6d6;color:#111;width:calc(293 * var(--u));padding:calc(17 * var(--u))}.avatars{display:grid;grid-template-columns:repeat(4,calc(48 * var(--u)));gap:calc(9 * var(--u)) calc(10 * var(--u));margin-top:calc(25 * var(--u))}.avatar{width:calc(48 * var(--u));height:calc(48 * var(--u));object-fit:cover;border-radius:50%;filter:grayscale(1);opacity:0;transform:scale(.4)}.avatar.pop{animation:pop .5s cubic-bezier(.2,.8,.2,1) forwards}.trust-num{position:absolute;bottom:calc(45 * var(--u));left:calc(17 * var(--u));font:500 calc(43 * var(--u))/1 Archivo,sans-serif}.trust-label{position:absolute;bottom:calc(20 * var(--u));left:calc(17 * var(--u));font-size:calc(12 * var(--u))}.award-card{width:calc(298 * var(--u));background:#262626;padding:calc(17 * var(--u));color:#fff}.award-card .trust-num{left:calc(17 * var(--u));bottom:auto;top:calc(17 * var(--u));font-size:calc(39 * var(--u))}.award-card .trust-label{left:calc(17 * var(--u));top:calc(61 * var(--u));bottom:auto;color:#999}.laurel{position:absolute;right:calc(20 * var(--u));top:calc(104 * var(--u));width:calc(130 * var(--u));height:calc(130 * var(--u));border:1px solid #aaa;border-radius:50%;display:grid;place-items:center;text-align:center;font:500 calc(10 * var(--u))/1.1 Archivo,sans-serif;letter-spacing:.05em}.laurel:before,.laurel:after{content:"❧";position:absolute;font-size:calc(62 * var(--u));color:#aaa}.laurel:before{left:calc(-16 * var(--u));transform:rotate(-25deg)}.laurel:after{right:calc(-16 * var(--u));transform:scaleX(-1) rotate(-25deg)}.award-note{position:absolute;bottom:calc(18 * var(--u));left:calc(17 * var(--u));right:calc(17 * var(--u));color:#aaa;font-size:calc(11 * var(--u));line-height:1.15}.portrait-card{width:calc(200 * var(--u));flex:none}.portrait-card img{width:100%;height:100%;object-fit:cover;filter:grayscale(1)}
+    .portfolio-section{background:#000;padding:0 calc(69 * var(--u)) calc(150 * var(--u))}.section-inner{border-top:1px solid var(--line);padding-top:calc(44 * var(--u))}.section-kicker{color:#858585;font:500 calc(13 * var(--u))/1 Archivo,sans-serif;letter-spacing:.04em;text-transform:uppercase;margin-bottom:calc(28 * var(--u))}.about-grid{display:grid;grid-template-columns:calc(300 * var(--u)) 1fr;grid-template-rows:auto auto;gap:calc(44 * var(--u)) calc(64 * var(--u));align-items:center;justify-items:center;max-width:calc(900 * var(--u));margin:0 auto}.about-photo{width:100%;aspect-ratio:4 / 5;object-fit:cover;border-radius:calc(18 * var(--u));display:block;grid-row:1 / 3}.about-title,.about-text{grid-column:2;text-align:left;justify-self:start}.about-title{font-size:calc(64 * var(--u));line-height:.92;letter-spacing:-.05em;font-weight:500;margin:0}.about-text{max-width:calc(400 * var(--u));font-size:calc(19 * var(--u));line-height:1.25;color:#d0d0d0;margin:0}.about-text span{color:#707070}.project-carousel{position:relative}.project-grid{display:flex;gap:calc(14 * var(--u));overflow-x:auto;scroll-behavior:smooth;scrollbar-width:none;padding-bottom:calc(4 * var(--u));overscroll-behavior-x:contain}.project-grid::-webkit-scrollbar{display:none}.project-card{position:relative;flex:0 0 calc((100% - calc(28 * var(--u))) / 3);min-height:calc(360 * var(--u));border:1px solid var(--line);border-radius:calc(12 * var(--u));overflow:hidden;background:#171717;color:#fff;isolation:isolate}.project-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.2,1);z-index:-2}.project-card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.84));z-index:-1;transition:background .5s ease}.project-card:hover img,.project-card:focus-within img{transform:scale(1.06)}.project-card:hover:after,.project-card:focus-within:after{background:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.9))}.project-info{position:absolute;inset:auto calc(20 * var(--u)) calc(20 * var(--u));transform:translateY(0);transition:transform .55s cubic-bezier(.2,.8,.2,1)}.project-card:hover .project-info,.project-card:focus-within .project-info{transform:translateY(calc(-4 * var(--u)))}.project-index{display:block;font:500 calc(13 * var(--u))/1 Archivo,sans-serif;color:#d0d0d0;margin-bottom:calc(12 * var(--u))}.project-name{font-size:calc(32 * var(--u));letter-spacing:-.04em;margin:0 0 calc(8 * var(--u));font-weight:500}.project-desc{font-size:calc(13 * var(--u));line-height:1.3;color:#d0d0d0;margin:0;max-width:calc(260 * var(--u))}.project-tags{display:flex;gap:6px;flex-wrap:wrap;font-size:calc(11 * var(--u));color:#bbb;margin-top:calc(14 * var(--u))}.project-nav{display:flex;justify-content:flex-end;gap:calc(8 * var(--u));margin-top:calc(18 * var(--u))}.project-nav button{width:calc(38 * var(--u));height:calc(38 * var(--u));border:1px solid rgba(255,255,255,.35);border-radius:50%;background:#111;color:#fff;cursor:pointer;transition:background .25s ease,transform .25s ease}.project-nav button:hover{background:#333;transform:translateY(calc(-2 * var(--u)))}                                .skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:calc(14 * var(--u))}.skill-box{border:1px solid var(--line);border-radius:calc(8 * var(--u));padding:calc(20 * var(--u));min-height:calc(210 * var(--u))}.skill-box h3{font-size:calc(25 * var(--u));font-weight:500;margin:0 0 calc(26 * var(--u))}.skill-list{display:flex;flex-wrap:wrap;align-items:flex-start;gap:calc(18 * var(--u)) calc(10 * var(--u))}.skill-list span{display:flex;flex:0 0 calc(82 * var(--u));flex-direction:column;align-items:center;justify-content:flex-start;gap:calc(8 * var(--u));color:#c8c8c8;font-size:calc(11 * var(--u));line-height:1.15;text-align:center}.skill-list span img{display:block;flex:0 0 auto;width:calc(42 * var(--u));height:calc(42 * var(--u));margin:0 auto;object-fit:contain;filter:grayscale(1) brightness(1.8)}.gis-tools{text-align:center}.gis-tools .skill-list{justify-content:center}.gis-tools .skill-list span img{filter:none}.method-list{display:flex;flex-wrap:wrap;justify-content:center;gap:calc(10 * var(--u));margin-top:calc(22 * var(--u))}.method-list span{display:inline-flex;padding:calc(8 * var(--u)) calc(13 * var(--u));border:1px solid rgba(255,255,255,.25);border-radius:999px;color:#c8c8c8;font-size:calc(12 * var(--u));white-space:nowrap}.experience-list{border-bottom:1px solid var(--line)}.experience-row{display:grid;grid-template-columns:calc(180 * var(--u)) 1fr calc(120 * var(--u));gap:calc(20 * var(--u));padding:calc(25 * var(--u)) 0;border-top:1px solid var(--line);align-items:start}.experience-row time{color:#777;font:500 calc(13 * var(--u))/1 Archivo,sans-serif}.experience-row h3{font-size:calc(25 * var(--u));font-weight:500;margin:0 0 calc(8 * var(--u))}.experience-row p,.experience-row li{font-size:calc(14 * var(--u));line-height:1.3;color:#999;margin:0;max-width:calc(520 * var(--u))}.experience-row p+p{margin-top:calc(10 * var(--u))}.experience-row ul{margin:calc(10 * var(--u)) 0 0;padding-left:calc(18 * var(--u));max-width:calc(600 * var(--u))}.experience-row li+li{margin-top:calc(7 * var(--u))}.experience-row>span{justify-self:end;color:#8b8b8b;font-size:calc(13 * var(--u))}                        .experience-media{grid-column:2 / 3;display:flex;align-items:flex-start;gap:calc(14 * var(--u));margin-top:calc(24 * var(--u));overflow:hidden}.experience-media figure{margin:0;flex:1;min-width:0;border:1px solid rgba(255,255,255,.24);border-radius:calc(10 * var(--u));padding:calc(6 * var(--u));background:#1a1a1a;overflow:hidden}.experience-media img{width:100%;height:auto;display:block;object-fit:initial;transition:transform .4s ease}.experience-media .certificate-frame{flex:1;display:block;background:#111}.experience-media .certificate-frame img{object-fit:initial;object-position:initial}            .experience-media .kkp-frame{aspect-ratio:4 / 3}.experience-media .kkp-frame img{width:100%;height:100%;object-fit:cover}.experience-media .bmkg-main-frame{flex:0 0 30%}.experience-media .himataska-frame,.experience-media .delos-frame{flex:0 0 70%}.experience-media figure:hover img{transform:scale(1.05)}.contact-section{background:#dadada;color:#111;padding:calc(100 * var(--u)) calc(69 * var(--u)) calc(120 * var(--u))}.contact-section .section-inner{border-color:rgba(17,17,17,.25)}.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:calc(100 * var(--u))}.contact-title{font-size:calc(68 * var(--u));letter-spacing:-.06em;line-height:.88;font-weight:500;margin:0}.contact-copy{font-size:calc(16 * var(--u));line-height:1.25;max-width:calc(310 * var(--u));margin-top:calc(26 * var(--u))}.contact-copy a{color:#111}.contact-form{display:grid;gap:calc(15 * var(--u));align-content:start}.contact-form label{font-size:calc(12 * var(--u));text-transform:uppercase;letter-spacing:.04em}.contact-form input,.contact-form textarea{width:100%;border:0;border-bottom:1px solid rgba(17,17,17,.45);background:transparent;padding:calc(12 * var(--u)) 0;font:500 calc(17 * var(--u))/1.2 "Inter Tight",sans-serif;color:#111;outline:0;resize:vertical}.contact-form input:focus,.contact-form textarea:focus{border-color:#111}.contact-form textarea{min-height:calc(105 * var(--u))}.contact-form .button{justify-self:start;margin-top:calc(12 * var(--u));height:calc(47 * var(--u));padding:0 calc(22 * var(--u));font-size:calc(13 * var(--u))}
+    @keyframes rise{to{opacity:1;transform:translateY(0)}}@keyframes titleIn{to{transform:translateY(0)}}@keyframes photoIn{to{opacity:1;transform:translateY(0)}}@keyframes draw{from{transform:scaleX(0)}}@keyframes pop{to{opacity:1;transform:scale(1)}}
+    @media (prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-delay:0!important;transition:none!important}.hero-photo,.title-line,.nav,.hero-meta,.about,.growth,.availability,.brand-plate,.works,.stats,.logos{opacity:1;transform:none}.word{color:#f4f4f4}.avatar{opacity:1;transform:none}}
+    @media(max-width:760px){:root{--u:calc(100vw / 390)}.hero{height:auto;min-height:calc(1400 * var(--u));display:flex;flex-direction:column;padding:calc(130 * var(--u)) calc(20 * var(--u)) calc(30 * var(--u));overflow:hidden}.nav{top:calc(20 * var(--u));left:calc(20 * var(--u));height:calc(40 * var(--u));padding:calc(3 * var(--u))}.nav a{font-size:calc(12 * var(--u));padding:0 calc(12 * var(--u))}.nav .slider{top:calc(3 * var(--u));left:calc(3 * var(--u));height:calc(34 * var(--u));width:calc(48 * var(--u))}.hero-meta{top:calc(20 * var(--u));right:calc(20 * var(--u))}.hero-meta>span{display:none}.contact{width:calc(40 * var(--u));height:calc(40 * var(--u));font-size:0}.contact:after{content:none}.contact .icon-arrow{font-size:calc(18 * var(--u))}.title{position:relative;left:auto;top:auto;font-size:calc(67 * var(--u));margin-bottom:calc(34 * var(--u))}.title-year{left:calc(216 * var(--u));top:calc(21 * var(--u));font-size:calc(14 * var(--u))}.about{position:relative;left:auto;top:auto;max-width:calc(280 * var(--u));margin-bottom:calc(40 * var(--u))}.growth-cluster{position:relative;right:auto;top:auto;width:100%;height:calc(145 * var(--u));align-self:center;margin-bottom:calc(20 * var(--u))}.growth{position:absolute}.hero-photo{position:relative;left:auto;top:auto;order:4;width:calc(350 * var(--u));height:calc(470 * var(--u));align-self:center;margin:calc(-5 * var(--u)) auto calc(-370 * var(--u));transform:translateY(40px)}.brand-plate{position:relative;left:auto;top:auto;order:5;width:calc(300 * var(--u));height:calc(60 * var(--u));align-self:center;margin-bottom:calc(250 * var(--u));padding:0 calc(14 * var(--u))}.brand-plate strong{font-size:calc(20 * var(--u))}.works{position:relative;right:auto;top:auto;order:8;width:calc(180 * var(--u));align-self:flex-end}.availability{position:relative;right:auto;top:auto;order:7;align-self:flex-end;margin-bottom:calc(22 * var(--u))}.stats{position:relative;left:auto;bottom:auto;order:6;width:100%;height:calc(208 * var(--u));margin-bottom:calc(30 * var(--u))}.logos{display:none}.bar{height:calc(80 * var(--u));padding:0 calc(20 * var(--u));font-size:calc(11 * var(--u))}.scroll-cue{gap:calc(5 * var(--u))}.round-arrow{width:calc(24 * var(--u));height:calc(24 * var(--u))}.statement{padding:calc(90 * var(--u)) calc(20 * var(--u)) calc(120 * var(--u))}.statement-copy{font-size:calc(28 * var(--u));line-height:1.2}.subline{margin-top:calc(80 * var(--u));font-size:calc(18 * var(--u))}.trust-wrap{padding:0 calc(12 * var(--u)) calc(80 * var(--u))}.trust-panel{padding:calc(35 * var(--u)) calc(20 * var(--u));display:block;min-height:0}.trust-heading{font-size:calc(47 * var(--u))}.glass.one{right:calc(5 * var(--u))}.glass.two{display:none}.trust-copy{font-size:calc(14 * var(--u));margin:calc(40 * var(--u)) 0}.trust-cards{display:grid;grid-template-columns:1fr;gap:calc(14 * var(--u))}.trust-card,.avatar-card,.award-card,.portrait-card{width:100%;height:calc(250 * var(--u))}.portrait-card{display:none}.avatars{grid-template-columns:repeat(4,calc(48 * var(--u)));justify-content:start;margin-top:calc(18 * var(--u))}.trust-num{bottom:calc(31 * var(--u))}.trust-label{bottom:calc(13 * var(--u))}.laurel{right:calc(35 * var(--u));top:calc(75 * var(--u))}.portfolio-section{padding:0 calc(20 * var(--u)) calc(95 * var(--u))}.section-inner{padding-top:calc(30 * var(--u))}.about-grid,.contact-layout{grid-template-columns:1fr;gap:calc(32 * var(--u))}.about-title,.contact-title{font-size:calc(50 * var(--u))}.about-text{font-size:calc(17 * var(--u))}.project-grid,.skills-grid{grid-template-columns:1fr}.project-card{min-height:calc(220 * var(--u))}.skill-box{min-height:calc(175 * var(--u))}.experience-row{grid-template-columns:1fr;gap:calc(8 * var(--u));padding:calc(20 * var(--u)) 0}.experience-row>span{justify-self:start}.experience-media{grid-column:1;gap:calc(7 * var(--u));margin-top:calc(12 * var(--u))}.experience-media figure{height:calc(230 * var(--u));padding:calc(4 * var(--u))}.experience-media .certificate-frame{flex-basis:100%}.contact-section{padding:calc(70 * var(--u)) calc(20 * var(--u)) calc(90 * var(--u))}}
+    @media(max-width:760px){.about-grid{grid-template-columns:1fr;grid-template-rows:auto;gap:calc(32 * var(--u));max-width:none}.about-photo{width:min(100%,calc(300 * var(--u)));justify-self:center;grid-row:auto}.about-title,.about-text{grid-column:auto}.social-footer{padding:0 calc(20 * var(--u)) calc(24 * var(--u))}.social-footer-inner{align-items:flex-start;flex-direction:column;gap:calc(18 * var(--u))}.social-links{width:100%;justify-content:space-between;gap:calc(8 * var(--u))}.social-link{font-size:calc(11 * var(--u))}.social-link img{width:calc(20 * var(--u));height:calc(20 * var(--u))}.experience-media figure{height:auto}.experience-media img{height:auto}}
+    @media(max-width:760px){.project-card{flex-basis:82%;min-height:calc(360 * var(--u))}.project-nav{justify-content:center}}
+     .skill-list span img{filter:none}.social-footer{background:#dadada;color:#111;padding:0 calc(69 * var(--u)) calc(30 * var(--u))}.social-footer-inner{border-top:1px solid rgba(17,17,17,.25);padding-top:calc(22 * var(--u));display:flex;align-items:center;justify-content:space-between;gap:calc(20 * var(--u))}.social-footer-label{font:500 calc(13 * var(--u))/1 Archivo,sans-serif;text-transform:uppercase;letter-spacing:.04em}.social-links{display:flex;align-items:center;gap:calc(20 * var(--u))}.social-link{display:inline-flex;align-items:center;gap:calc(8 * var(--u));color:#111;text-decoration:none;font-size:calc(13 * var(--u));transition:opacity .25s ease,transform .25s ease}.social-link:hover,.social-link:focus-visible{opacity:.62;transform:translateY(calc(-2 * var(--u)))}.social-link img{width:calc(22 * var(--u));height:calc(22 * var(--u));display:block;object-fit:contain;filter:none}
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <span>Samuel Silaban</span>
-            </div>
-            <div class="nav-menu" id="nav-menu">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#about" class="nav-link">About Me</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#experience" class="nav-link">Experience</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#contact" class="nav-link contact-btn">Contact</a>
-                <a href="CV.Samuel Silaban.pdf" class="nav-link cv-download" download>Download CV</a>
-            </div>
-            <button class="theme-toggle" id="theme-toggle" aria-label="Ganti tema" title="Light Mode">
-                <i class="fas fa-sun"></i>
-            </button>
-            <div class="hamburger" id="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>I HAVE <span class="highlight">MARINE INFORMATION SYSTEMS</span> & <span class="highlight">SPATIAL ANALYSIS</span> EXPERIENCE</h1>
-                    <p>Saya mahasiswa Sistem Informasi Kelautan dengan minat dalam pemrograman web dan analisis spasial. Aktif dalam pengembangan solusi teknologi untuk sektor kelautan dan perikanan.</p>
-                    <div class="hero-indicators">
-                        <span class="indicator active"></span>
-                        <span class="indicator"></span>
-                        <span class="indicator"></span>
-                        <span class="indicator"></span>
-                        <span class="indicator"></span>
-                        <span class="indicator"></span>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <div class="image-container">
-                        <img src="photoprofile.png" alt="Samuel Silaban" id="profile-img">
-                        <div class="image-overlay"></div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="hero-skills" aria-label="Technologies and project experience">
-                <div class="hero-skills-track">
-                    <div class="hero-skills-set">
-                        <div class="skill-tag">HTML</div>
-                        <div class="skill-tag">CSS</div>
-                        <div class="skill-tag">JavaScript</div>
-                        <div class="skill-tag">Python</div>
-                        <div class="skill-tag">ArcGIS Pro</div>
-                        <div class="skill-tag">IoT-Based Water Quality Monitoring</div>
-                    </div>
-                    <div class="hero-skills-set" aria-hidden="true">
-                        <div class="skill-tag">HTML</div>
-                        <div class="skill-tag">CSS</div>
-                        <div class="skill-tag">JavaScript</div>
-                        <div class="skill-tag">Python</div>
-                        <div class="skill-tag">ArcGIS Pro</div>
-                        <div class="skill-tag">IoT-Based Water Quality Monitoring</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <main class="page">
+    <section class="hero" id="home">
+      <img class="hero-photo" src="Sam1.png" alt="Man in a dark jacket seen from behind">
+      <nav class="nav" aria-label="Primary navigation"><span class="slider"></span><a class="active" href="#home">Home</a><a href="#about">About</a><a href="#projects">Projects</a><a href="#contact">Contact</a></nav>
+      <div class="hero-meta"><span>Samuel Silaban | GIS · Programming</span><a class="button contact" href="#contact">Email Me <i class="bi bi-arrow-down icon-arrow" aria-hidden="true"></i></a></div>
+      <h1 class="title"><span class="title-line">SAMUEL</span><span class="title-line">SILABAN</span></h1>
+      <div class="about" id="studio"><div class="eyebrow"></div><p>Mapping ideas into useful digital experiences through GIS, data, and thoughtful code.</p><a class="button cv-download" href="assets/CV.Samuel%20Silaban.pdf">Download CV <i class="bi bi-download icon-arrow" aria-hidden="true"></i></a></div>
+      <div class="growth-cluster"><div class="growth"><span class="check">✓</span>Spatial Thinking</div><div class="growth"><span class="check">✓</span>Data Driven</div><div class="growth"><span class="check">✓</span>Digital Solutions</div></div>
+      <div class="availability"><b>Available for</b><br><span>GIS &amp; code projects</span></div>
+      <div class="works" id="works"><div class="works-title">Featured Work<br><small>GIS &amp; Programming &nbsp; |&nbsp; 2026</small></div><div class="work-image"><img class="active" src="assets/sitarum.png" alt="Sitarum GIS project map"><img src="assets/sitarum1.png" alt="Sitarum GIS project detail"><button class="work-arrow" aria-label="View next featured work"><i class="bi bi-arrow-up-right icon-arrow" aria-hidden="true"></i></button></div><div class="progress"><i></i></div></div>
+      <div class="stats"><div class="stat-card partner-card coding-card"><img src="assets/Coding.png" alt="Samuel coding a GIS and web project"><div class="stat-number project-label">GIS &amp; Web Project</div><div class="partner-marks"><span>IoT</span><span>ArcGIS</span><span>Python</span><span>React</span><span>Data Analyst</span><span>Leaflet</span></div><div class="callbar">Explore my work <b><i class="bi bi-arrow-up-right icon-arrow" aria-hidden="true"></i></b></div></div><div class="stat-card feed-card"><img src="assets/PotensiSeaweed.png" alt="Seaweed potential GIS analysis"><div class="feed-copy"><b>GIS</b><br>Spatial data<br>turned into<br>meaningful insights</div></div></div>
+      <div class="logos">ArcGIS &nbsp; · &nbsp; Python &nbsp; · &nbsp; JavaScript</div>
     </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>What Can I Do For <span class="highlight">Your Needs</span></h2>
-                    <p>Sebagai mahasiswa Sistem Informasi Kelautan yang berpengalaman dalam pemrograman dan analisis spasial, saya dapat membantu Anda dalam berbagai solusi teknologi untuk sektor kelautan dan perikanan.</p>
-                    
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <h3>200+</h3>
-                            <p>Lines of Code Written</p>
-                        </div>
-                        <div class="stat-item">
-                            <h3>100+</h3>
-                            <p>Study Hours Spent</p>
-                        </div>
-                        <div class="stat-item">
-                            <h3>20+</h3>
-                            <p>Projects Completed</p>
-                        </div>
-                        <div class="stat-item">
-                            <h3>1+</h3>
-                            <p>Publications</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="services-grid">
-                    <div class="service-item">
-                        <div class="service-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <h3>Web Development</h3>
-                        <p>Pengembangan aplikasi web menggunakan HTML, CSS, JavaScript, dan Python untuk solusi kelautan.</p>
-                    </div>
-                    
-                    <div class="service-item">
-                        <div class="service-icon">
-                            <i class="fas fa-map"></i>
-                        </div>
-                        <h3>Spatial Analysis</h3>
-                        <p>Analisis data spasial menggunakan ArcGIS Pro, Google Earth Engine, dan R untuk penelitian kelautan.</p>
-                    </div>
-                    
-                    <div class="service-item">
-                        <div class="service-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <h3>Database Management</h3>
-                        <p>Pengelolaan dan analisis data menggunakan MySQL untuk sistem informasi kelautan.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2>My <span class="highlight">Skills</span></h2>
-            <div class="skills-container">
-                <div class="skills-category">
-                    <h3>Programming Skills</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fab fa-html5"></i>
-                            </div>
-                            <div class="skill-header">
-                                <span>HTML</span>
-                                <span class="skill-percentage">75%</span>
-                            </div>
-                            <div class="skill-level">
-                                <div class="skill-bar" style="width: 75%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fab fa-css3-alt"></i>
-                            </div>
-                            <div class="skill-header">
-                                <span>CSS</span>
-                                <span class="skill-percentage">75%</span>
-                            </div>
-                            <div class="skill-level">
-                                <div class="skill-bar" style="width: 75%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fab fa-js-square"></i>
-                            </div>
-                            <div class="skill-header">
-                                <span>JavaScript</span>
-                                <span class="skill-percentage">75%</span>
-                            </div>
-                            <div class="skill-level">
-                                <div class="skill-bar" style="width: 75%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fab fa-python"></i>
-                            </div>
-                            <div class="skill-header">
-                                <span>Python</span>
-                                <span class="skill-percentage">65%</span>
-                            </div>
-                            <div class="skill-level">
-                                <div class="skill-bar" style="width: 65%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-database"></i>
-                            </div>
-                            <div class="skill-header">
-                                <span>MySQL</span>
-                                <span class="skill-percentage">70%</span>
-                            </div>
-                            <div class="skill-level">
-                                <div class="skill-bar" style="width: 70%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="skills-category">
-                    <h3>Spatial Analysis Tools</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-map-marked-alt"></i>
-                            </div>
-                            <div class="skill-header">
-                                <span>ArcGIS Pro</span>
-                                <span class="skill-percentage">60%</span>
-                            </div>
-                            <div class="skill-level">
-                                <div class="skill-bar" style="width: 60%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-satellite"></i>
-                            </div>
-                            <div class="skill-header">
-                                <span>Google Earth Engine</span>
-                                <span class="skill-percentage">60%</span>
-                            </div>
-                            <div class="skill-level">
-                                <div class="skill-bar" style="width: 60%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fab fa-r-project"></i>
-                            </div>
-                            <div class="skill-header">
-                                <span>R Studio</span>
-                                <span class="skill-percentage">50%</span>
-                            </div>
-                            <div class="skill-level">
-                                <div class="skill-bar" style="width: 50%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <h2>My <span class="highlight">Experience</span></h2>
-            <div class="experience-timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <h3>Intern</h3>
-                        <h4>Stasiun Meteorologi Maritim Kelas I Merak | BMKG</h4>
-                        <span class="timeline-date">2026 August - Present</span>
-                        <img class="experience-image" src="assets/samBMKG.jpeg" alt="Samuel saat menjalani magang di BMKG" loading="lazy">
-                        <p>Sedang menjalani magang di Stasiun Meteorologi Maritim Kelas I Merak, terlibat dalam proyek-proyek penelitian dan Analisis GIS.</p>
-                    </div>
-                </div>
-                 <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <h3>Intern</h3>
-                        <h4>BPPSDM Kementrian Kelautan dan Perikanan</h4>
-                        <span class="timeline-date">2026 Feb - 2026 June</span>
-                        <div class="experience-gallery">
-                            <img class="experience-image" src="assets/samKKP.jpeg" alt="Samuel saat menjalani magang di BPPSDM Kementrian Kelautan dan Perikanan" loading="lazy">
-                            <img class="experience-image" src="assets/samKKP1.jpeg" alt="Kegiatan Samuel di BPPSDM Kementrian Kelautan dan Perikanan" loading="lazy">
-                        </div>
-                        <ul class="experience-highlights">
-                            <li>Menganalisis stok karbon mangrove di wilayah Pantai Utara Jawa menggunakan GIS dan penginderaan jauh secara temporal dari 2013–2025.</li>
-                            <li>Menyusun artikel jurnal berdasarkan analisis temporal stok karbon mangrove pada periode 2020–2025.</li>
-                            <li>Mendukung penelitian mahasiswa program doktoral ITB melalui pengolahan dan analisis data stok karbon mangrove berbasis remote sensing.</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <h3>Active Member</h3>
-                        <h4>HIMATASKA (Himpunan Mahasiswa Sistem Informasi Kelautan)</h4>
-                        <span class="timeline-date">2024 - 2025</span>
-                        <img class="experience-image" src="assets/SertifHimpunan.jpg" alt="Sertifikat keanggotaan HIMATASKA Samuel Silaban" loading="lazy">
-                        <p>Aktif dalam organisasi kemahasiswaan sebagai anggota Komisi IV pada Dewan Perwakilan HIMATASKA, serta berpartisipasi dalam kegiatan akademik dan pengembangan soft skills di bidang kelautan.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <h3>Research Publication</h3>
-                        <h4>Marine Information Systems Journal</h4>
-                        <span class="timeline-date">2025</span>
-                        <img class="experience-image" src="assets/jurnal.png" alt="Publikasi jurnal Samuel Silaban" loading="lazy">
-                        <p>Menerbitkan 1 publikasi jurnal dalam bidang sistem informasi kelautan yang membahas implementasi teknologi GIS untuk analisis data maritim.</p>
-                        <p>Bisa Diakses Pada link ini <a href="https://jpips.fkip.unila.ac.id/index.php/jpg/article/view/22" target="_blank">https://jpips.fkip.unila.ac.id
-                        <br>/index.php/jpg/article/view/22</a>.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2>Academic <span class="highlight">Projects</span></h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="dismap.png" alt="Marine Data Visualization">
-                        <div class="project-overlay">
-                            <div class="project-icons">
-                                <i class="fas fa-external-link-alt"></i>
-                                <i class="fab fa-github"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Dismap</h3>
-                        <p>WebGIS Untuk Mitigasi Bencana di Wilayah Banten.</p>
-                        <div class="project-tags">
-                            <span>Html/CSS</span>
-                            <span>JavaScript</span>
-                            <span>Leaflet</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="image.png" alt="GIS Web Application">
-                        <div class="project-overlay">
-                            <div class="project-icons">
-                                <i class="fas fa-external-link-alt"></i>
-                                <i class="fab fa-github"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>W-DOSE</h3>
-                        <p>Alat Dosing PH Otomatis Yang Terintegrasi Dengan Website Untuk Pemantauan dan Kontrol Jarak Jauh.</p>
-                        <div class="project-tags">
-                            <span>HTML/CSS</span>
-                            <span>C++</span>
-                            <span>JavaScript</span>
-                            <span>Python</span>
-                            <span>IoT</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="fishsight.png" alt="Database Management System">
-                        <div class="project-overlay">
-                            <div class="project-icons">
-                                <i class="fas fa-external-link-alt"></i>
-                                <i class="fab fa-github"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Marine Database System</h3>
-                        <p>PENGEMBANGAN DASHBOARD VISUALISASI PRODUKSI PERIKANAN BERBASIS WEB UNTUK PENGELOLAAN SUMBER DAYA LAUT BERKELANJUTAN</p>
-                        <div class="project-tags">
-                            <span>MySQL</span>
-                            <span>Python</span>
-                            <span>HTML/CSS</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="contact-orbit" aria-hidden="true">
-            <div class="contact-orbit-ring">
-                <img src="assets/aruslaut.png" alt="">
-                <img src="assets/potensi.png" alt="">
-                <img src="assets/rstudio.png" alt="">
-                <img src="assets/samBMKG.jpeg" alt="">
-                <img src="assets/samKKP.jpeg" alt="">
-                <img src="assets/samKKP1.jpeg" alt="">
-                <img src="assets/SertifHimpunan.jpg" alt="">
-                <img src="assets/jurnal.png" alt="">
-            </div>
-        </div>
-        <div class="container">
-            <div class="contact-content">
-                <h2>Get In <span class="highlight">Touch</span></h2>
-                <div class="contact-info">
-                    <h3>Let's discuss</h3>
-                    <p>Tertarik untuk berkolaborasi dalam proyek teknologi kelautan? Mari berdiskusi!</p>
-                    
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>silabansamuel59@gmail.com</span>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <span>+62 895-356-397900</span>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Banten, Indonesia</span>
-                    </div>
-                    
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/samuelsilaban/"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://github.com/24sammm"><i class="fab fa-github"></i></a>
-                        <a href="https://www.instagram.com/24sammm_/"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                
-                <div class="contact-form">
-                    <form action="https://formsubmit.co/silabansamuel59@gmail.com" method="POST">
-                        <input type="hidden" name="_subject" value="Pesan baru dari portfolio Samuel Silaban">
-                        <input type="hidden" name="_template" value="table">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="text" name="name" placeholder="Your Name" autocomplete="name" required>
-                        <input type="email" name="email" placeholder="Your Email" autocomplete="email" required>
-                        <textarea name="message" placeholder="Your Message" required></textarea>
-                        <button type="submit">Send Message</button>
-                       
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Samuel Silaban. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+    <section class="portfolio-section" id="about"><div class="section-inner"><div class="section-kicker">About me</div><div class="about-grid"><img class="about-photo" src="assets/samuelsilaban.png" alt="Samuel Silaban"><h2 class="about-title">GIS &amp; full-stack<br>developer<br>with purpose.</h2><p class="about-text">I’m Samuel, a GIS and full-stack developer turning spatial data into clear, useful digital experiences through remote sensing, spatial analysis, and interactive web mapping.<br><br><span>My work spans mangrove and blue carbon research, maritime data, and web development through experiences with BMKG, KKP, and DELOS.</span></p></div></div></section>
+    <section class="portfolio-section" id="projects"><div class="section-inner"><div class="section-kicker">Selected projects</div><div class="project-carousel"><div class="project-grid">
+      <article class="project-card"><img src="assets/IoT.jpeg" alt="W-Dose automatic pH dosing device"><div class="project-info"><span class="project-index"></span><h3 class="project-name">W-Dose</h3><p class="project-desc">Alat Dosing PH Otomatis Yang Terintegrasi Dengan Website Untuk Pemantauan dan Kontrol Jarak Jauh.</p><div class="project-tags"><span>IoT</span><span>Web Development</span></div></div></article>
+      <article class="project-card"><img src="assets/Sitarum3.png" alt="SITARUM maritime allocation system"><div class="project-info"><span class="project-index"></span><h3 class="project-name">SITARUM</h3><p class="project-desc">Sistem Titik Alokasi &amp; Ruang Umum, Perikanan, Swasta Maritim.</p><div class="project-tags"><span>GIS</span><span>Maritime Data</span></div></div></article>
+      <article class="project-card"><img src="assets/dismap.png" alt="Dismap disaster mitigation WebGIS"><div class="project-info"><span class="project-index"></span><h3 class="project-name">Dismap</h3><p class="project-desc">WebGIS Untuk Mitigasi Bencana di Wilayah Banten.</p><div class="project-tags"><span>WebGIS</span><span>Disaster Mitigation</span></div></div></article>
+      <article class="project-card"><img src="assets/fishsight.png" alt="FishSight fisheries production dashboard"><div class="project-info"><span class="project-index"></span><h3 class="project-name">FishSight</h3><p class="project-desc">Pengembangan Dashboard Visualisasi Produksi Perikanan Berbasis Web Untuk Pengelolaan Sumber Daya Laut Berkelanjutan.</p><div class="project-tags"><span>Dashboard</span><span>Data Visualization</span></div></div></article>
+    </div><div class="project-nav"><button type="button" class="project-prev" aria-label="Previous projects"><i class="bi bi-arrow-left" aria-hidden="true"></i></button><button type="button" class="project-next" aria-label="Next projects"><i class="bi bi-arrow-right" aria-hidden="true"></i></button></div></div></div></section>
+    <section class="portfolio-section" id="skills"><div class="section-inner"><div class="section-kicker">Tools & skills</div><div class="skills-grid"><div class="skill-box gis-tools"><h3>GIS</h3><div class="skill-list"><span><img src="https://www.arcgis.com/sharing/rest/content/items/ab9bcb8eb2394b61a12d6dc6c4cc6590/data" alt="Official ArcGIS Pro logo">ArcGIS Pro</span><span><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Google%20Earth%20Icon.png" alt="Google Earth Pro logo">Google Earth Pro</span><span><img src="https://commons.wikimedia.org/wiki/Special:FilePath/RStudio%20logo%20flat.svg" alt="RStudio logo">RStudio</span><span><img src="https://raw.githubusercontent.com/Leaflet/Leaflet/main/logo.svg" alt="Leaflet logo">Leaflet</span></div><div class="method-list"><span>Remote Sensing</span><span>Spatial Analysis</span><span>Mangrove Analysis</span><span>Oceanography Analysis</span><span>Blue Carbon</span></div></div><div class="skill-box"><h3>Programming</h3><div class="skill-list"><span><img src="https://www.python.org/static/opengraph-icon-200x200.png" alt="Official Python logo">Python</span><span><img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript logo">JavaScript</span><span><img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" alt="Official HTML5 logo">HTML / CSS</span><span><img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="Official React logo">React</span><span><img src="https://raw.githubusercontent.com/Leaflet/Leaflet/main/logo.svg" alt="Official Leaflet logo">Leaflet</span><span><img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Arduino_Logo.svg" alt="Official Arduino logo">Arduino</span><span><img src="https://www.mysql.com/common/logos/logo-mysql-170x115.png" alt="Official MySQL logo">MySQL</span><span><img src="https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg" alt="Official C++ logo">C++</span><span><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="Official GitHub logo">GitHub</span></div><div class="method-list"><span>Web Development</span><span>Full-Stack Developer</span><span>Data Visualization</span><span>Interactive Mapping</span><span>IoT Development</span></div></div></div></div></section>
+    <section class="portfolio-section" id="experience"><div class="section-inner"><div class="section-kicker">Experience</div><div class="experience-list"><div class="experience-row"><time>2026 Aug — Present</time><div><h3>Intern</h3><p>Stasiun Meteorologi Maritim Kelas I Merak | BMKG</p><p>Sedang menjalani magang, terlibat dalam proyek-proyek penelitian dan analisis GIS.</p></div><span>BMKG</span><div class="experience-media"><figure class="bmkg-main-frame"><img src="assets/samBMKG.jpeg" alt="Samuel during BMKG internship"></figure><figure><img src="assets/aws1.png" alt="BMKG internship activity"></figure><figure><img src="assets/Aws.png" alt="BMKG internship documentation"></figure></div></div><div class="experience-row"><time>2026 Feb — Jun</time><div><h3>Intern</h3>    <p>BPPSDM Kementerian Kelautan dan Perikanan</p><p>Jl. Medan Merdeka Timur No. 16, Jakarta Pusat, DKI Jakarta 10110 (Gedung Mina Bahari III Lantai 6</p><ul><li>Menganalisis stok karbon mangrove di wilayah Pantai Utara Jawa menggunakan GIS dan penginderaan jauh secara temporal dari 2013–2025.</li><li>Menyusun artikel jurnal berdasarkan analisis temporal stok karbon mangrove pada periode 2020–2025.</li><li>Mendukung penelitian mahasiswa program doktoral ITB melalui pengolahan dan analisis data stok karbon mangrove berbasis remote sensing.</li></ul></div><span>KKP</span><div class="experience-media"><figure class="kkp-frame"><img src="assets/samKKP.jpeg" alt="Samuel during KKP internship"></figure>    <figure class="kkp-frame"><img src="assets/samKKP1.jpeg" alt="KKP internship documentation"></figure><figure class="kkp-frame"><img src="assets/KKPJurnal.png" alt="KKP journal documentation"></figure></div></div><div class="experience-row"><time>2025 Oct — Dec</time><div><h3>Web Consultant &amp; Developer</h3><p>DELOS · Paruh Waktu</p><p>Jl. Malabar, Guntur, Jakarta Selatan · Jarak jauh</p><p>Web Developer (Squarespace Customization)</p><p>Redesigned and optimized company website using Squarespace platform with custom HTML, CSS, and JavaScript enhancements to improve responsiveness and user experience.</p></div><span>DELOS</span><div class="experience-media"><figure class="certificate-frame delos-frame"><img src="assets/Delos.png" alt="DELOS website project"></figure></div></div><div class="experience-row"><time>2024 — 2025</time><div><h3>Active Member</h3>    <p>HIMATASKA (Himpunan Mahasiswa Sistem Informasi Kelautan)</p><p>Universitas Pendidikan Indonesia Kampus Daerah Serang</p><p>Aktif dalam organisasi kemahasiswaan sebagai anggota Komisi IV pada Dewan Perwakilan HIMATASKA, serta berpartisipasi dalam kegiatan akademik dan pengembangan soft skills di bidang kelautan.</p></div><span>HIMATASKA</span><div class="experience-media"><figure class="certificate-frame himataska-frame"><img src="assets/SertifHimpunan.jpg" alt="HIMATASKA organization certificate"></figure></div></div></div></div></section>
+    <section class="contact-section" id="contact"><div class="section-inner"><div class="contact-layout"><div><div class="section-kicker">Contact</div><h2 class="contact-title">Let’s make<br>something<br>meaningful.</h2><p class="contact-copy">Have a project, an idea, or just want to say hello? Send me a note at <a href="mailto:silabansamuel59@gmail.com">silabansamuel59@gmail.com</a>.</p></div><form class="contact-form" action="https://formsubmit.co/silabansamuel59@gmail.com" method="POST"><input type="hidden" name="_subject" value="New message from Samuel portfolio"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_template" value="table"><label for="name">Your name</label><input id="name" name="name" type="text" autocomplete="name" placeholder="Your name" required><label for="email">Your email</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required><label for="message">Message</label><textarea id="message" name="message" placeholder="Tell me a little about your project..." required></textarea><button class="button" type="submit">Send email <i class="bi bi-arrow-up-right icon-arrow" aria-hidden="true"></i></button></form></div></div></section>
+  </main>
+  <footer class="social-footer"><div class="social-footer-inner"><span class="social-footer-label">Find me online</span><div class="social-links"><a class="social-link" href="https://www.instagram.com/24sammm_/" target="_blank" rel="noopener noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">Instagram</a><a class="social-link" href="https://www.linkedin.com/in/samuelsilaban/" target="_blank" rel="noopener noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn">LinkedIn</a><a class="social-link" href="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" target="_blank" rel="noopener noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub">GitHub</a></div></div></footer>
+  <script>
+    const recorder=new URLSearchParams(location.search).get("rec")==="1", reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const animateCount=(el,duration=1400)=>{const target=+el.dataset.target; if(reduce||recorder&&el.closest(".hero")){el.textContent=target+(target===56?"M":"+");return}const start=performance.now();const tick=now=>{const progress=Math.min((now-start)/duration,1);el.textContent=Math.floor(progress*target)+(target===56?"M":"+");if(progress<1)requestAnimationFrame(tick)};requestAnimationFrame(tick)};
+    document.querySelectorAll(".hero .count").forEach(el=>animateCount(el));
+    if(!reduce){addEventListener("scroll",()=>{document.querySelector(".hero-photo").style.transform=`translateY(${scrollY*.12+40}px)`},{passive:true})}else{document.querySelector(".hero-photo").style.transform="none"}
+    const nav=document.querySelector(".nav"), navSlider=nav.querySelector(".slider"), navLinks=[...nav.querySelectorAll("a")], navActive=nav.querySelector("a.active");
+    let navTargetX=navActive.offsetLeft-navSlider.offsetLeft, navTargetWidth=navActive.offsetWidth, navX=navTargetX, navWidth=navTargetWidth, navFrame;
+    const moveNavSlider=link=>{navTargetX=link.offsetLeft-navSlider.offsetLeft;navTargetWidth=link.offsetWidth;if(!navFrame)navFrame=requestAnimationFrame(animateNavSlider)};
+    const animateNavSlider=()=>{navX+=(navTargetX-navX)*.12;navWidth+=(navTargetWidth-navWidth)*.12;navSlider.style.width=`${navWidth}px`;navSlider.style.transform=`translateX(${navX}px)`;if(Math.abs(navTargetX-navX)>.1||Math.abs(navTargetWidth-navWidth)>.1)navFrame=requestAnimationFrame(animateNavSlider);else{navX=navTargetX;navWidth=navTargetWidth;navFrame=0}};
+    navLinks.forEach(link=>{link.addEventListener("mouseenter",()=>moveNavSlider(link));link.addEventListener("focus",()=>moveNavSlider(link))});
+    nav.addEventListener("mouseleave",()=>moveNavSlider(navActive));
+    nav.addEventListener("focusout",event=>{if(!nav.contains(event.relatedTarget))moveNavSlider(navActive)});
+    const workSlides=[...document.querySelectorAll(".work-image img")], workProgress=document.querySelector(".progress i"), workArrow=document.querySelector(".work-arrow"); let workIndex=0;
+    workArrow.addEventListener("click",()=>{workIndex=(workIndex+1)%workSlides.length;workSlides.forEach((slide,index)=>slide.classList.toggle("active",index===workIndex));workProgress.style.transform=`scaleX(${workIndex+1})`});
+    const projectGrid=document.querySelector(".project-grid"), projectStep=()=>projectGrid.querySelector(".project-card").getBoundingClientRect().width+parseFloat(getComputedStyle(projectGrid).gap);
+    document.querySelector(".project-next").addEventListener("click",()=>projectGrid.scrollBy({left:projectStep(),behavior:"smooth"}));
+    document.querySelector(".project-prev").addEventListener("click",()=>projectGrid.scrollBy({left:-projectStep(),behavior:"smooth"}));
+    document.querySelector(".cv-download").addEventListener("click",async event=>{event.preventDefault();const link=event.currentTarget;try{const response=await fetch(link.href);if(!response.ok)throw new Error(`CV preview failed: ${response.status}`);const objectUrl=URL.createObjectURL(await response.blob()), preview=window.open(objectUrl,"_blank","noopener,noreferrer");if(!preview)throw new Error("CV preview window was blocked");setTimeout(()=>URL.revokeObjectURL(objectUrl),60000)}catch(error){console.error(error);alert("CV tidak dapat dibuka. Silakan izinkan tab baru lalu coba lagi.")}});
+  </script>
 </body>
-
 </html>
